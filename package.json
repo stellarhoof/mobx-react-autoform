@@ -1,0 +1,89 @@
+{
+  "name": "mobx-react-autoform",
+  "repository": "https://github.com/stellarhoof/mobx-react-autoform",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "scripts": {
+    "start": "snowpack dev",
+    "test": "node node_modules/.bin/jest",
+    "test:watch": "node node_modules/.bin/jest --watch"
+  },
+  "dependencies": {
+    "@theme-ui/components": "^0.3.1",
+    "@theme-ui/core": "^0.3.1",
+    "futil": "^1.67.0",
+    "lodash": "^4.17.19",
+    "mobx": "^5.15.4",
+    "mobx-react-lite": "^2.0.7",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "peerDependencies": {
+    "mobx": "^5.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@emotion/babel-plugin-jsx-pragmatic": "^0.1.5",
+    "@snowpack/plugin-babel": "^2.0.2",
+    "@theme-ui/presets": "^0.3.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.1.0",
+    "babel-plugin-add-react-displayname": "0.0.5",
+    "eslint": "^7.4.0",
+    "jest": "^26.1.0",
+    "prettier": "^2.0.5",
+    "snowpack": "^2.7.5",
+    "validatorjs": "^3.18.1"
+  },
+  "snowpack": {
+    "alias": {
+      "@lib": "./lib"
+    },
+    "plugins": [
+      "@snowpack/plugin-babel"
+    ]
+  },
+  "babel": {
+    "plugins": [
+      "babel-plugin-add-react-displayname",
+      [
+        "@emotion/babel-plugin-jsx-pragmatic",
+        {
+          "module": "@theme-ui/core",
+          "import": "jsx",
+          "export": "jsx"
+        }
+      ],
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "pragma": "jsx",
+          "pragmaFrag": "React.Fragment"
+        }
+      ]
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!futil).+\\.js$"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2020
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
